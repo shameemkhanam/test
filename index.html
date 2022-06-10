@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock</title>
+    <style>
+      body{
+        background-color: black;
+      }
+      .clock{
+        position: absolute;
+        color: lightgreen;
+        top: 50%;
+        left: 50%;
+        font-size: 5rem;
+        letter-spacing: 8px;
+        transform: translateX(-50%) translateY(-50%);
+        border: 2px dashed green;
+        border-radius: 50px;
+        padding: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="digitalClock" class="clock"></div>
+
+    <script type="text/javascript">
+      function showTime() {
+        var date = new Date();
+        var h = date.getHours();
+        var m = date.getMinutes();
+        var s = date.getSeconds();
+        var session = "AM";
+
+        if (h == 0) {
+          h = 12; //12 hr format
+        }
+
+        if (h > 12) {
+          h = h - 12;
+          session = "PM";
+        }
+
+        // if (h < 10) {
+        //   //0-9
+        //   h = "0" + h;
+        // }
+
+        // if (m < 10) {
+        //   //0-9
+        //   m = "0" + m;
+        // }
+
+        // if (s < 10) {
+        //   //0-9
+        //   s = "0" + s;
+        // }
+
+        h = (h<10) ? "0"+ h : h;
+        m = (m<10) ? "0"+ m : m;
+        s = (s<10) ? "0"+ s : s;
+
+        document.getElementById("digitalClock").innerHTML =
+          h + ":" + m + ":" + s + " " + session;
+
+        setTimeout(showTime, 1000);
+      }
+
+      showTime();
+    </script>
+  </body>
+</html>
